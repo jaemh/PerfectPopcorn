@@ -1,3 +1,8 @@
 {
+    "files.exclude": {
+        "**/venv/": true,
+        "**/__pycache__/": true,
+        "**/.vscode/": true
+    },
     "python.pythonPath": "${workspaceFolder}/venv/bin/python"
 }
