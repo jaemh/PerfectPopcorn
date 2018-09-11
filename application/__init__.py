@@ -16,8 +16,9 @@ db = SQLAlchemy(app)
 #Luetaan kansiosta application tietoston views sisältö
 from application import views
 
-#Tuodaan models luokka application käyttöön
+#Tuodaan luokat application käyttöön
 from application.tasks import models
+from application.tasks import views
 
 #Luodaan lopulta tarvittavat tietokantataulut
 db.create_all()
