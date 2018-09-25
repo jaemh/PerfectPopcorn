@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{{ error }}
+<form method="POST" action="{{ url_for('signup') }}">
+  <table> 
+      <br>
+      <tr>
+        <td>
+            {{ form.name.label }} {{ form.name }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.username.label }} {{ form.username }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+            {{ form.password.label }} {{ form.password }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Sign up"/>
+        </td>
+      </tr>
+  </table>
+</form>
+    
+      
+
+{% endblock %}

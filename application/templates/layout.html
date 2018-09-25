@@ -6,15 +6,23 @@
     </head>
 
     <body>
-      <ul>
-        <li><a href="{{ url_for('tasks_index') }}">List tasks</a></li>
-        <li><a href="{{ url_for('tasks_form') }}">Add a task</a></li>
-      </ul>
+      <h1>PerfectPopcorn</h1>
+      {% if current_user.is_authenticated %}
+        <p>
+          <a href="{{ url_for('tasks_index') }}">Pääsivu |</a>
+          <a href="{{ url_for('person_page') }}">Oma sivu |</a>
+          <a href="{{ url_for('logout') }}">Kirjaudu ulos</a>
+        </p>
+
+        <p> Tervetuloa {{ current_user.name }}.</p>
+      {% else %}
+        <a href="{{ url_for('tasks_index') }}">Pääsivu |</a>
+        <a href="{{ url_for('login') }}">Kirjaudu |</a>
+        <a href="{{ url_for('signup') }}">Uusi käyttäjä</a>
+      {% endif %}
       
       {% block body %}
-        <p>
-          Content.
-        </p>
+      
       {% endblock %}
     </body>
   </html>
