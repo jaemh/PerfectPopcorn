@@ -28,12 +28,11 @@ def signup():
     
     form = RegistrationForm(request.form)
     
-    if form.validate_on_submit():
+    if request.method == 'POST':
        new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
        db.session.add(new_user)
        db.session.commit()
-
-       return "<h1>New user has been created!</h1>"
+       return "New user has been created!"
 
 @app.route("/logout")
 def logout():
