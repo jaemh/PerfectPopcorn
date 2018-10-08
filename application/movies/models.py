@@ -7,4 +7,4 @@ class Movie(db.Model):
 
 
 def __repr__(self):
-    return '<Movie {}>'.format(self.movie_name)   
+    return '<Movie %r>' % self.name 

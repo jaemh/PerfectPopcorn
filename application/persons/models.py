@@ -1,10 +1,5 @@
 from application import db
 
-movies = db.Table('movies',
-        db.Column('movie_id', db.Integer, db.ForeignKey('movie.id')),
-        db.Column('person_id', db.Integer, db.ForeignKey('person.id')),
-        )
-
 
 class Person(db.Model):
     __tablename__ = "person"
@@ -17,3 +12,9 @@ class Person(db.Model):
         
     def __repr__(self):
         return '<Person %r>' % self.name
+
+    
+movies = db.Table('movies',
+    db.Column('movie_id', db.Integer, db.ForeignKey('movie.id')),
+    db.Column('person_id', db.Integer, db.ForeignKey('person.id')),
+    ) 
