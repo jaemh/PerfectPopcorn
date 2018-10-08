@@ -4,10 +4,21 @@
 <div>
     <ul>
         <tr>
-            <td>vvvv</td>
-            {% if current_user.is_authenticated %}
-            <input type="submit" value="Lisää suosikkeihin"/>
-            {% endif %}
+            <li>Spider man
+                {% if current_user.is_authenticated %}
+                    <input type="submit" value="Lisää suosikkeihin"/>
+                {% endif %}
+            </li>
+            <li>Iron man
+                {% if current_user.is_authenticated %}
+                    <input type="submit" value="Lisää suosikkeihin"/>
+                {% endif %}
+            </li>
+            <li>Hulk
+                {% if current_user.is_authenticated %}
+                    <input type="submit" value="Lisää suosikkeihin"/>
+                {% endif %}
+            </li>
         </tr>
         
     </ul>

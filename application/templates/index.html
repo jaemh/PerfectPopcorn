@@ -5,12 +5,10 @@
 <table>
   <ul>
     <li><a href="{{ url_for('all_action_movies')}}">Action</a></li>
-    <li>Adventure</li>
-    <li>Comedy</li>
-    <li>Crime</li>
-    <li>Drama</li>
-    <li>Fantasy</li>
-    <li>Historical</li>
+    <li><a href="{{ url_for('all_comedy_movies')}}">Comedy</a></li>
+    <li><a href="{{ url_for('all_drama_movies')}}">Drama</a></li>
+    <li><a href="{{ url_for('all_fantacy_movies')}}">Fantasy</a></li>
+    <li><a href="{{ url_for('all_historical_movies')}}">Historical</a></li>
   </ul>
 </table>
 {% endblock %}
