@@ -3,10 +3,17 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
-app.config["SQLALCHEMY_ECHO"] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+import os
+
+if os.environ.get("HEROKU"):
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"    
+    app.config["SQLALCHEMY_ECHO"] = True
+
 db = SQLAlchemy(app)
+
 
 #Luetaan kansiosta application tietoston views sisältö
 from application import views
@@ -42,4 +49,7 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 #Luodaan lopulta tarvittavat tietokantataulut
-db.create_all()
+try: 
+    db.create_all()
+except:
+    pass
