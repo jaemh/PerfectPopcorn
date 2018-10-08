@@ -4,5 +4,5 @@
         "**/__pycache__/": true,
         "**/.vscode/": true
     },
-    "python.pythonPath": "${workspaceFolder}/venv/bin/python"
+    "python.pythonPath": "/usr/local/bin/python3"
 }

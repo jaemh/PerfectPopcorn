@@ -1,9 +1,15 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<ul>
-    <li>Elokuva1 <button>Lisää suosikkeihin</button></li>
-    <li>Elokuva2</li>
-    <li>Elokuva3</li>
-    <li>Elokuva4</li>
+<div>
+    <ul>
+        <tr>
+            <td>vvvv</td>
+            {% if current_user.is_authenticated %}
+            <input type="submit" value="Lisää suosikkeihin"/>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

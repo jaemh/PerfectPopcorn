@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
 #Pyydetään SQLAlchemyä tuomaan kaikki SQL -kyselyt
 app.config["SQLALCHEMY_ECHO"] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #Luodaan db-olio jota käytetään tietokannan käsittelyyn
 db = SQLAlchemy(app)
@@ -21,8 +22,10 @@ from application.tasks import views
 from application.auth import models
 from application.auth import views
 
-from application.person import views
+from application.persons import models
+from application.persons import views
 
+from application.movies import models
 from application.movies import views
 
 #kirjautuminen

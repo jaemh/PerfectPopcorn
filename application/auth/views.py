@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
+
 from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm, RegistrationForm
@@ -20,6 +21,7 @@ def login():
 
     login_user(user)
     return render_template("index.html") 
+
 
 @app.route("/signup", methods = ["GET", "POST"])
 def signup():
