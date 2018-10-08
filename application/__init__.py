@@ -1,17 +1,12 @@
 #Tuodaan Flask käyttöön
 from flask import Flask
-app = Flask(__name__)
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 
-
-#Käytetään tasks.db-nimistä SQLite -tietokantaa.
+app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
-#Pyydetään SQLAlchemyä tuomaan kaikki SQL -kyselyt
 app.config["SQLALCHEMY_ECHO"] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-#Luodaan db-olio jota käytetään tietokannan käsittelyyn
 db = SQLAlchemy(app)
 
 #Luetaan kansiosta application tietoston views sisältö
