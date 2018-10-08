@@ -1,9 +1,19 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<style>
+      .genre {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+         
+      }
 
+
+</style>
 <table>
-  <ul>
+  <ul class="genre">
     <li><a href="{{ url_for('all_action_movies')}}">Action</a></li>
     <li><a href="{{ url_for('all_comedy_movies')}}">Comedy</a></li>
     <li><a href="{{ url_for('all_drama_movies')}}">Drama</a></li>

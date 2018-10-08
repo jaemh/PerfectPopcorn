@@ -1,8 +1,23 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<p>List of favorite movies</p>
+<table>
+        <tr>
+            <th>Movie</th>
+        </tr>
+        
+        <tr>        
+            {% for movie in perons %}
+        <tr>        
+            <td>{{ movie.name }}</td>
+            
+        </tr>
+        {% endfor %}
+        </tr>
+        
+    </table>
 
 <a href="{{ url_for('person_edit') }}">Edit</a>
 
 {% endblock %}
+

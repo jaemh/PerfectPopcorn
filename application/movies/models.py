@@ -6,5 +6,7 @@ class Movie(db.Model):
     movie_name = db.Column(db.String(20), nullable=False)
 
 
-def __repr__(self):
-    return '<Movie %r>' % self.name 
+    def __init__(self, name):
+        self.name=name
+    
+    

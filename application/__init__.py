@@ -31,6 +31,7 @@ from application.persons import views
 from application.movies import models
 from application.movies import views
 
+
 #kirjautuminen
 
 from application.auth.models import User

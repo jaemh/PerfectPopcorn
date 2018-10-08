@@ -13,7 +13,8 @@ class Person(db.Model):
     mov = db.relationship('Movie', 
                 secondary=movies,
                 backref=db.backref('movie', lazy='dynamic'),
-                )
+)
         
-    def __repr__(self):
-        return '<Person %r>' % self.name
+    def __init__(self, name):
+        self.id = id
+		

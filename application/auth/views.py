@@ -34,7 +34,7 @@ def signup():
        new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
        db.session.add(new_user)
        db.session.commit()
-       return "New user has been created!"
+       return redirect(url_for("login"))
 
 @app.route("/logout")
 def logout():

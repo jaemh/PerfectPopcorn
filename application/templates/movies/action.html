@@ -1,26 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div>
-    <ul>
-        <tr>
-            <li>Spider man
-                {% if current_user.is_authenticated %}
-                    <input type="submit" value="Lisää suosikkeihin"/>
-                {% endif %}
-            </li>
-            <li>Iron man
-                {% if current_user.is_authenticated %}
-                    <input type="submit" value="Lisää suosikkeihin"/>
-                {% endif %}
-            </li>
-            <li>Hulk
-                {% if current_user.is_authenticated %}
-                    <input type="submit" value="Lisää suosikkeihin"/>
-                {% endif %}
-            </li>
-        </tr>
-        
-    </ul>
-</div>
-{% endblock %}
+    <form>
+        {% if current_user.is_authenticated %}
+            <input type="submit" value="Lisää suosikkeihin"/>
+
+        {% endif %}
+      
+    </form>
+
+{% endblock %}      

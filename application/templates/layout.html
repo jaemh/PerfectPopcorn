@@ -3,22 +3,63 @@
     <head>
       <meta charset="utf-8">
       <title>PerfectPopcorn</title>
+      <style> 
+      
+      body {
+        background-color: dimgray;
+        height: 200%;
+      }
+      
+      .container {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        
+      }
+
+      .links {
+          float: left;
+      }
+
+      a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      li a:hover {
+          background-color: #111;
+      }
+
+      .headline{
+        color: aliceblue;
+        text-decoration: none;
+      }
+
+      </style>
     </head>
 
     <body>
-      <a href="{{ url_for('tasks_index') }}"><h1>PerfectPopcorn</h1></a>
-      {% if current_user.is_authenticated %}
-        <p>
-          <a href="{{ url_for('person_page') }}">Oma sivu |</a>
-          <a href="{{ url_for('logout') }}">Kirjaudu ulos</a>
-        </p>
-
-        <p> Tervetuloa {{ current_user.name }}.</p>
-      {% else %}
-        <a href="{{ url_for('login') }}">Kirjaudu |</a>
-        <a href="{{ url_for('signup') }}">Uusi käyttäjä</a>
-      {% endif %}
       
+      <ul class="container">
+          <a href="{{ url_for('tasks_index') }}"><h1 class="headline">PerfectPopcorn</h1></a>
+          {% if current_user.is_authenticated %}
+          <li class="links"><a href="{{ url_for('person_page') }}">Oma sivu </a></li>
+          <li class="links"><a href="{{ url_for('movie_form') }}">Lisää elokuva </a></li>
+          <li class="links"><a href="{{ url_for('logout') }}">Kirjaudu ulos</a></li>
+       
+
+          <br><p> Tervetuloa {{ current_user.name }}.</p>
+          {% else %}
+          <li class="links"><a href="{{ url_for('login') }}">Kirjaudu </a></li>
+          <li class="links"><a href="{{ url_for('signup') }}">Uusi käyttäjä</a></li>
+        
+          {% endif %}
+    </ul>
       {% block body %}
       
       {% endblock %}

@@ -2,30 +2,76 @@
 
 {% block body %}
 {{ error }}
+
+<style>
+
+    .form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1em;
+        width: 18em;
+        height: 18em;
+        position: absolute;
+        top: 63%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%) 
+        
+        
+    }
+
+    .form-lable {
+        position: relative;
+        
+        top: 2em;
+        color: black;
+        font-size: 20px;
+        margin: 36%;
+    }
+
+    .form-input {
+      position: relative;
+      top: 3em;
+      left: 6em;
+      border-radius: 4px;
+      margin: 10px;
+      padding: 10px;
+
+    }
+
+    .button {
+      background-color: forestgreen;
+      border-radius: 4px;
+      position: relative;
+      left: 37%;
+      top: 3em;
+      border-block-end-style: groove;
+      font-size: 15px; 
+      padding: 10px 24px;
+    }
+
+
+</style>
+
 <form method="POST" action="{{ url_for('login') }}">
-  <table>
+    <div class="form"> 
     <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
+      <label>	{{ form.username.label(class_="form-lable") }} </label>
+      <div> {{ form.username(class_="form-input") }} </div>
     </tr>
     <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
+      <label> {{ form.password.label(class_="form-lable") }} </label>
+      <div> {{ form.password(class_="form-input") }}</div>
     </tr>
+
     <tr>
       <td colspan="2">
-	<input type="submit" value="Login"/>
+	      <input class="button" type="submit" value="Login"/>
       </td>
     </tr>
-  </table>
-</form>
+
+  
+</div>
+  
 
 {% endblock %}
