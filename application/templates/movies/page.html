@@ -7,17 +7,16 @@
         </tr>
         
         <tr>        
-            {% for movie in perons %}
+            {% for movie in user.seenMovies %}
         <tr>        
-            <td>{{ movie.name }}</td>
-            
+            <td>{{ movie.movie_name }}</td>
         </tr>
-        {% endfor %}
+            {% endfor %}
         </tr>
         
     </table>
 
-<a href="{{ url_for('person_edit') }}">Edit</a>
+
 
 {% endblock %}
 

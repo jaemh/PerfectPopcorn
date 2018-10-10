@@ -25,9 +25,6 @@ from application.tasks import views
 from application.auth import models
 from application.auth import views
 
-from application.persons import models
-from application.persons import views
-
 from application.movies import models
 from application.movies import views
 

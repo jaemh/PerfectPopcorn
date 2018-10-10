@@ -11,6 +11,7 @@
       }
       
       .container {
+        position: relative;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -40,6 +41,13 @@
         text-decoration: none;
       }
 
+      .welcome{
+        color: white;
+        position: relative;
+        left: 15em;
+
+      }
+
       </style>
     </head>
 
@@ -53,7 +61,7 @@
           <li class="links"><a href="{{ url_for('logout') }}">Kirjaudu ulos</a></li>
        
 
-          <br><p> Tervetuloa {{ current_user.name }}.</p>
+          <br><p class="welcome"> Tervetuloa {{ current_user.name }}</p>
           {% else %}
           <li class="links"><a href="{{ url_for('login') }}">Kirjaudu </a></li>
           <li class="links"><a href="{{ url_for('signup') }}">Uusi käyttäjä</a></li>
