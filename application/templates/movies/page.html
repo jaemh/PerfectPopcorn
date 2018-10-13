@@ -10,6 +10,7 @@
             {% for movie in user.seenMovies %}
         <tr>        
             <td>{{ movie.movie_name }}</td>
+            <td>{{ movie.genre.genre_name }}</td>
         </tr>
             {% endfor %}
         </tr>
