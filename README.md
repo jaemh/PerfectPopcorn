@@ -5,4 +5,4 @@
 
 [User story](https://github.com/jaemh/PerfectPopcorn/blob/master/documentation/User.md)
 
-[Tietokantakaavio](https://github.com/jaemh/PerfectPopcorn/blob/master/documentation/EntityTable.md)
+[Tietokantakaavio](https://github.com/jaemh/PerfectPopcorn/blob/master/documentation/EntityTable.png)
