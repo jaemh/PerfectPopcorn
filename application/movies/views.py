@@ -37,29 +37,13 @@ def create_movie():
 
     return person_page()
 
-@app.route("/action", methods=["GET"])
-def all_action_movies():
-    movies = Movie.query.all()
-    return render_template("movies/action.html", movies=movies)
+@app.route("/movie/")
+def movie_page():
+    return render_template("movies/movie_page.html")
 
-@app.route("/comedy", methods=["GET"])
-def all_comedy_movies():
-    movies = Movie.query.all()
-    return render_template("movies/comedy.html", movies=movies)
-
-@app.route("/fantacy", methods=["GET"])
-def all_fantacy_movies():
-    movies = Movie.query.all()
-    return render_template("movies/fantacy.html", movies=movies)
-
-@app.route("/drama", methods=["GET"])
-def all_drama_movies():
-    movies = Movie.query.all()
-    return render_template("movies/drama.html", movies=movies)
-
-@app.route("/historical", methods=["GET"])
-def all_historical_movies():
-    movies = Movie.query.all()
-    return render_template("movies/historical.html", movies=movies)
+@app.route("/genre/<genre_id>")
+def genre_page(genre_id):
+    genres = Genre.query.filter_by(genre_id="1").first()
+    return render_template("movies/genre_page.html", genres=genres)
 
 

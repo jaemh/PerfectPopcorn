@@ -4,91 +4,49 @@
 {{ error }}
 
 <style>
-
-  .form {
-      background-color: white;
-      border-radius: 10px;
-      padding: 1em;
-      width: 18em;
-      height: 18em;
-      position: absolute;
-      top: 63%;
-      left: 50%;
-      margin-right: -50%;
-      transform: translate(-50%, -50%) 
-      
-      
+  body {
+    background: #eee !important;	
   }
 
-  .lable {
-      position: relative;
-      top: 0em;
-      left: 10px;
-      color: black;
-      font-size: 20px;
-      margin: 36%;
+  .wrapper {	
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
 
-  .input {
-    position: relative;
-    top: 0em;
-    left: 6em;
-    border-radius: 4px;
-    margin: 10px;
-    padding: 10px;
-
+  .form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1);  
+    
   }
 
-  .button {
-    background-color: forestgreen;
-    border-radius: 4px;
-    position: relative;
-    left: 46%;
-    top: 23em;
-    border-block-end-style: groove;
-    font-size: 15px; 
-    padding: 10px 24px;
+  .form-signin-heading{
+    margin-bottom: 30px;
   }
 
-  .password-lable {
-    position: relative;
-    top: 0em;
-    left: 90px;
-    font-size: 20px;
-  }
-
-  .password-input{
-    position: relative;
-    top: 0em;
-    left: 6em;
-    border-radius: 4px;
-    margin: 10px;
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
     padding: 10px;
   }
-
-
 </style>
 
-<form method="POST" action="{{ url_for('signup') }}">
-  <div class="form"> 
-    <table> 
-        {% if current_user.is_authenticated %}
-        <h3>Tässä voit vaihtaa salasanan</h3>
-        <tr><td>{{ form.password.label(class_="lable") }} {{ form.password(class_="password-input") }}</td></tr>
-        {% else %}
-        <tr><td>{{ form.name.label(class_="lable") }} {{ form.name(class_="input") }}</td></tr>
-        <tr><td>{{ form.username.label(class_="lable") }} {{ form.username(class_="input") }}</td></tr>
-        <tr><td>{{ form.password.label(class_="password-lable") }} {{ form.password(class_="password-input") }}</td></tr>
-        {% endif %}
-    </table>
-  </div>
-  <tr>
-    <td>
-      <input class="button" type="submit" value="Sign up"/>
-    </td>
-  </tr>
-</form>
-    
-      
-
+<div class="wrapper">
+  <form class="form-signin" method="POST" action="{{ url_for('signup') }}">
+    <h2 class="form-signin-heading">Create an Account</h2>
+      {% if current_user.is_authenticated %}
+    <h3>Tässä voit vaihtaa salasanan</h3>
+        <div>{{ form.password(class="form-control", placeholder="password") }}<div>
+      {% else %}
+        <div>{{ form.name(class="form-control", placeholder="name") }}</div>
+        <div>{{ form.username(class="form-control", placeholder="username") }}</div>
+        <div>{{ form.password(class="form-control", placeholder="password") }}</div>
+      {% endif %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+</div>
+ 
 {% endblock %}

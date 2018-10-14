@@ -16,6 +16,7 @@ class Genre(db.Model):
     genre_id = db.Column(db.Integer, primary_key=True)
     genre_name = db.Column(db.String)
 
-    def __init__(self, name):
-        self.genre_name=name
+    def __init__(self, name, id):
+        self.genre_name=name,
+        self.genre_id=id
 

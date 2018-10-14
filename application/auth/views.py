@@ -20,7 +20,7 @@ def login():
                                error = "No such username or password")
 
     login_user(user)
-    return render_template("index.html") 
+    return redirect(url_for("person_page")) 
 
 
 @app.route("/signup", methods = ["GET", "POST"])

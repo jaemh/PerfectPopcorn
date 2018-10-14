@@ -1,21 +1,23 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
-<table>
+    <table class="table">
+      <thead>
         <tr>
-            <th>Movie</th>
+          <th scope="col">Movie</th>
+          <th scope="col">Genre</th>
         </tr>
+      </thead>
         
         <tr>        
-            {% for movie in user.seenMovies %}
-        <tr>        
-            <td>{{ movie.movie_name }}</td>
-            <td>{{ movie.genre.genre_name }}</td>
-        </tr>
-            {% endfor %}
+          {% for movie in user.seenMovies %}
         </tr>
         
+        <tr>
+          <td><a href="{{ url_for('movie_page') }}">{{ movie.movie_name }}</a></td>
+          <td>{{ movie.genre.genre_name }}</td>
+        </tr>
+          {% endfor %}
     </table>
 
 

@@ -1,24 +1,25 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<style>
-      .genre {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-         
-      }
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Movie</th>
+          <th scope="col">Genre</th>
+        </tr>
+      </thead>
+        
+        <tr>        
+          {% for movie in movies %}
+        </tr>
+        
+        <tr>
+          <td><a href="{{ url_for('movie_page') }}">{{ movie.movie_name }}</a></td>
+          <td>{{ movie.genre.genre_name }}</td>
+        </tr>
+          {% endfor %}
+    </table>
 
 
-</style>
-<table>
-  <ul class="genre">
-    <li><a href="{{ url_for('all_action_movies')}}">Action</a></li>
-    <li><a href="{{ url_for('all_comedy_movies')}}">Comedy</a></li>
-    <li><a href="{{ url_for('all_drama_movies')}}">Drama</a></li>
-    <li><a href="{{ url_for('all_fantacy_movies')}}">Fantasy</a></li>
-    <li><a href="{{ url_for('all_historical_movies')}}">Historical</a></li>
-  </ul>
-</table>
+
 {% endblock %}
