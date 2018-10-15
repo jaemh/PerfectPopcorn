@@ -1,8 +1,7 @@
-Tapaus1:
+Tapaus 1:
 
-Käyttäjä menee sivulle http://perfectpopcorn.herokuapp.com. Käyttäjä haluaa lukea arvosteluja,
-jolloin hän valistsee genren ja siltä haluaman elokuvan. Arvostelut näkyvät elokuvan omalla sivulla.
+Käyttäjä menee sivulle http://perfectpopcorn.herokuapp.com. Käyttäjä haluaa lukea arvosteluja. Hän clickaa valitsemaan elokuvaan ja ohjautuu elokuvan sivulle, jossa pystyy lukemaan arvosteluja.
 
 Tapaus 2:
 Käyttäjä luo itselleen käyttäjätunnuksen. Hän kirjautuu sivustolle, jolloin hän pystyy 
-lisäämään elokuvia suosikkilistaan. Käyttäjä voi tarvitaessa myös vaihtaa salasanan.
+lisäämään elokuvia. Käyttäjä pystyy nyt myös arvostelemaan niitä. Omalta sivulta Käyttäjä voi tarvitaessa myös vaihtaa salasanan.
