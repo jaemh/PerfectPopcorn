@@ -9,4 +9,4 @@ Asennus:
 
     python3 run.py
 
-4. Sovellut pyörii nyt lockalhostilla. 
+4. Sovellut pyörii nyt localhostilla. 
