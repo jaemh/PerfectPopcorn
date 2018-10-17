@@ -10,6 +10,7 @@ class User(db.Model):
     name = db.Column(db.String(15))
     username = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(50))
+    posts = db.relationship('Post', backref="comment", lazy=True)
     seenMovies = db.relationship('Movie', 
                 secondary=movies,
                 backref=db.backref('movie', lazy='dynamic')

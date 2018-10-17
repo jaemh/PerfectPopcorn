@@ -10,8 +10,7 @@ from flask_login import current_user, login_required
 @app.route("/person", methods=["GET"])
 def person_page():
     user = User.query.get(current_user.id)
-    post = Post.query.all()
-    return render_template("movies/page.html", user=user, post=post)
+    return render_template("movies/page.html", user=user)
 
 @app.route("/edit")
 def person_edit():
@@ -41,7 +40,7 @@ def create_movie():
     if request.form.get('comment') is not None:
     
         comment = request.form.get('comment')
-        post = Post(comment, f.movie_id)
+        post = Post(comment, f.movie_id, userId)
         db.session().add(post)
         db.session().commit()
   
@@ -54,8 +53,10 @@ def b(movie_id):
 
 @app.route("/movies/<movie_id>/comments/", methods=["POST"])
 def create_post(movie_id):
+    userId = current_user.id
+
     comment = request.form.get('comment')
-    post = Post(comment, movie_id)
+    post = Post(comment, movie_id, userId)
 
     db.session().add(post)
     db.session().commit()
@@ -66,6 +67,32 @@ def create_post(movie_id):
 def genre_page(genre_id):
     movies = Movie.query.filter_by(genre_id=genre_id)
     return render_template("movies/genre_page.html", movies=movies)
+
+@app.route("/person/<movie_id>", methods=["POST"])
+def user_list(movie_id):
+    
+    movie = Movie.query.get(movie_id)
+
+    userId = current_user.id
+    user = User.query.get(userId)
+    user.seenMovies.append(movie)
+    db.session.add(user)
+    db.session.commit()
+
+    return person_page()
+
+@app.route("/post/delete/<post_id>", methods=["POST"])
+def delete_post(post_id):
+
+    post = Post.query.get(post_id)
+    movieId = post.film.movie_id
+   
+    
+    if current_user.id == post.user_id:
+        db.session.delete(post)
+        db.session.commit()
+
+    return b(movieId)
 
 
 

@@ -3,9 +3,17 @@
 {% block body %}
 <div>Comments</div>
 
+    
 {% for post in movie.posts %}
-
-<div>{{ post.post_text }}</div>
+    
+    <li>{{ post.post_text }} 
+        <form method="POST" action="{{ url_for('delete_post', post_id=post.post_id )}}">
+            {% if post.user_id == current_user.id %}
+            <button type="submit">Delete</button>
+            {% endif%}
+        </form>
+    
+    </li>
 
 {% endfor %}
 

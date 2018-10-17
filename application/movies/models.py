@@ -19,17 +19,20 @@ class Genre(db.Model):
     genre_id = db.Column(db.Integer, primary_key=True)
     genre_name = db.Column(db.String)
 
-    def __init__(self, name, id):
-        self.genre_name=name,
-        self.genre_id=id
+    def __init__(self, name):
+        self.genre_name=name
+       
 
 class Post(db.Model):
     post_id = db.Column(db.Integer, primary_key=True)
     post_text = db.Column(db.String(500), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     movie_id = db.Column(db.Integer, db.ForeignKey('movie.movie_id'),
         nullable=False)
+    
 
-    def __init__(self, text, movie_id):
+    def __init__(self, text, movie_id, user_id):
         self.post_text=text
         self.movie_id=movie_id
+        self.user_id=user_id
 

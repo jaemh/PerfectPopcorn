@@ -2,9 +2,19 @@
 
 {% block body %}
 
-{% for movie in movies %}
-    
-{{ movie.movie_name }}
 
-{% endfor%}
+<table class="table">  
+  <thead>
+      <th scope="col">Movie</th>
+  </thead>
+
+    <tr>
+      {% for movie in movies %}
+    </tr>
+    <tr>
+      <td>{{ movie.movie_name }}</td>
+    </tr>
+      {% endfor%}
+</table>  
+  
 {% endblock %}

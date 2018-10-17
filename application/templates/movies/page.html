@@ -6,7 +6,6 @@
         <tr>
           <th scope="col">Movie</th>
           <th scope="col">Genre</th>
-          <th scope="col">Comment</th>
         </tr>
       </thead>
         
@@ -17,7 +16,6 @@
         <tr>
           <td><a href="{{ url_for('b', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a></td>
           <td><a href="{{ url_for('genre_page', genre_id=movie.genre_id) }}">{{ movie.genre.genre_name }}</a></td>
-          
         </tr>
         {% endfor %}
           

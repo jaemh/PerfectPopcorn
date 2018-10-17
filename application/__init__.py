@@ -40,13 +40,39 @@ login_manager.init_app(app)
 
 login_manager.login_view = "login"
 login_manager.login_massage = "Please login to use this funcionality."
+from application.movies.models import Genre
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
+def insert_genres():
+    print("genret: ")
+    genres = Genre.query.all()
+    print(genres)
+
+    if len(genres) == 0:
+      print("genret empty ")
+      action = Genre('Action')
+      comedy = Genre('Comedy')
+      drama = Genre('Drama')
+      fantasy = Genre('Fantasy')
+      historical = Genre('Historical')
+      db.session.add(action)
+      db.session.add(comedy)
+      db.session.add(drama)
+      db.session.add(fantasy)
+      db.session.add(historical)
+      db.session.commit()
+    
+
 #Luodaan lopulta tarvittavat tietokantataulut
 try: 
     db.create_all()
+except:
+    pass
+
+try: 
+    insert_genres()
 except:
     pass
