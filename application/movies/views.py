@@ -27,8 +27,10 @@ def movie_form():
 def create_movie():
     f = Movie.query.filter_by(movie_name=request.form.get('name')).first()
 
+
     if f is None: 
       f = Movie(request.form.get('name'), Genre.query.get(request.form.get('genre')))
+      
 
     userId = current_user.id
     user = User.query.get(userId)
@@ -36,6 +38,13 @@ def create_movie():
     db.session().add(user)
     db.session().commit()
 
+    if request.form.get('comment') is not None:
+    
+        comment = request.form.get('comment')
+        post = Post(comment, f.movie_id)
+        db.session().add(post)
+        db.session().commit()
+  
     return person_page()
 
 @app.route("/movies/<movie_id>/comments/")

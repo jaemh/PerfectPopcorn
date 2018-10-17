@@ -19,7 +19,7 @@
             <tr>
              
               <td><a href="{{ url_for('b', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a></td>
-              <td>{{movie.genre.genre_name}}</td>
+              <td><a href="{{ url_for('genre_page', genre_id=movie.genre_id) }}">{{movie.genre.genre_name}}</a></td>
             </tr>
               {% endfor %}
     </table>
