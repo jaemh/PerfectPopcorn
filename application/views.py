@@ -1,10 +1,10 @@
 from flask import render_template
 from application import app
-from application.movies.models import Movie
+from application.movies.models import Movie, Post
 
 @app.route("/")
 def intex():
     movies = Movie.query.all()
-    return render_template("index.html", movies=movies)
+    return render_template("index.html", movies=movies )
     
     

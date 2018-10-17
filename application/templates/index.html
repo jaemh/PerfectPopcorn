@@ -9,16 +9,19 @@
         </tr>
       </thead>
         
-        <tr>        
-          {% for movie in movies %}
-        </tr>
-        
-        <tr>
-          <td><a href="{{ url_for('movie_page') }}">{{ movie.movie_name }}</a></td>
-          <td>{{ movie.genre.genre_name }}</td>
-          
-        </tr>
-          {% endfor %}
+            <tr>
+              {% for movie in movies %}
+            </tr>
+            <tr>
+              
+            </tr>
+    
+            <tr>
+             
+              <td><a href="{{ url_for('b', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a></td>
+              <td>{{movie.genre.genre_name}}</td>
+            </tr>
+              {% endfor %}
     </table>
 
 

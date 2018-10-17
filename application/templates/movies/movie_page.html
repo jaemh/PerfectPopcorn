@@ -1,6 +1,21 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div>Posts</div>
-<button>New Posts</button>
+<div>Comments</div>
+
+{% for post in movie.posts %}
+
+<div>{{ post.post_text }}</div>
+
+{% endfor %}
+
+{% if current_user.is_authenticated %}
+<form method="POST" action="{{ url_for('create_post', movie_id=movie.movie_id) }}">
+    
+    <textarea name='comment'></textarea><br>
+    
+    <button type="submit">Add comment</button>
+    
+</form>
+{% endif %}
 {% endblock %}
