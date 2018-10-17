@@ -55,8 +55,8 @@ def create_post(movie_id):
 
 @app.route("/genre/<genre_id>")
 def genre_page(genre_id):
-    genres = Genre.query.filter_by(genre_id="1").first()
-    return render_template("movies/genre_page.html", genres=genres)
+    movies = Movie.query.filter_by(genre_id=genre_id)
+    return render_template("movies/genre_page.html", movies=movies)
 
 
 
