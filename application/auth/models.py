@@ -7,9 +7,9 @@ movies = db.Table('movies',
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(15))
-    username = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(50))
+    name = db.Column(db.String(10))
+    username = db.Column(db.String(10), unique=True)
+    password = db.Column(db.String(10))
     posts = db.relationship('Post', backref="comment", lazy=True)
     seenMovies = db.relationship('Movie', 
                 secondary=movies,

@@ -13,8 +13,9 @@ def login():
 
     form = LoginForm(request.form)
     # mahdolliset validoinnit
-
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    if request.method == "POST":
+        user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    
     if not user:
         return render_template("auth/login.html", form = form,
                                error = "No such username or password")
@@ -27,18 +28,23 @@ def login():
 def signup():
     if request.method == "GET":
         return render_template("auth/signup.html", form = RegistrationForm())
-    
+        
     form = RegistrationForm(request.form)
     
-    if request.method == 'POST' and form.validate():  
-        new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
-        db.session.add(new_user)
-        db.session.commit()
+    if request.method == "POST" and form.validate():
     
-        return render_template("auth/login.html", form=form)
+        existingUser = User.query.filter_by(username=form.username.data).first()
+        
+        if not existingUser:
+            new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
+            db.session.add(new_user)
+            db.session.commit()
+            return render_template("auth/login.html", form=form)
+        else:
+            return render_template("auth/signup.html", error="Username is already taken.", form=form)
     
-    return render_template("auth/signup.html", form=form, error="Username is already taken!")
-    
+    return render_template("auth/signup.html", form=form)
+   
 
 @app.route("/logout")
 def logout():
