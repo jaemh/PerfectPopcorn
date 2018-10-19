@@ -30,11 +30,15 @@ def signup():
     
     form = RegistrationForm(request.form)
     
-    if request.method == 'POST':
-       new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
-       db.session.add(new_user)
-       db.session.commit()
-       return redirect(url_for("login"))
+    if request.method == 'POST' and form.validate():  
+        new_user = User(name=form.name.data, username=form.username.data, password=form.password.data)
+        db.session.add(new_user)
+        db.session.commit()
+    
+        return render_template("auth/login.html", form=form)
+    
+    return render_template("auth/signup.html", form=form, error="Username is already taken!")
+    
 
 @app.route("/logout")
 def logout():
