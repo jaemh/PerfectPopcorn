@@ -6,3 +6,6 @@ class MovieForm(FlaskForm):
   
 class Meta:
     csrf = False
+
+class PostForm(FlaskForm):
+    comment = StringField("Comment")

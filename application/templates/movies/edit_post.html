@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <style>
+      .commentarea{
+        position: relative;
+        padding: 20px;
+        margin: 20px;
+        width: 300px;
+        border-radius: .4em;
+    }
+
+    .comment-button{
+        margin: 20px;
+        top: -45px;
+        position: relative;
+        width: 300px;
+        border-radius: .4em;
+        background-color:  #848a8c;
+    }
+
+  </style>
+    <form method="POST" action="{{ url_for('edit_post', post_id=post.post_id )}}">
+      <textarea class="commentarea" name='comment'></textarea><br>
+      <button class="comment-button" type="submit">Edit comment</button>
+    </form>
+  </div>
+
+
+{% endblock %}

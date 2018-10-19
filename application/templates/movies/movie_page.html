@@ -66,28 +66,32 @@
  background-color:  #848a8c;
 }
 
-
-
-
 </style>
 
 
 <h2 class="heading"> {{ movie.movie_name }} </h2>
 
- 
 {% for post in movie.posts %}
 <div class="col-sm-4">
   <div class="box">
-    <strong class="username">username</strong> 
-    
     <div>
+      <strong class="username">{{ post.comment.name}}</strong> 
       {{ post.post_text }}
     </div>
   </div>
+
+    <form method="GET" action="{{ url_for('edit_post', post_id=post.post_id )}}">
+    {% if post.user_id == current_user.id %}
+      <button class="delete-button">Edit</button>
+    {% endif%}
     
+    </form>
+
     <form method="POST" action="{{ url_for('delete_post', post_id=post.post_id )}}">
     {% if post.user_id == current_user.id %}
-      <button class="delete-button" type="submit">Delete</button>
+      
+      <button class="delete-button" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+      
     {% endif%}
     </form>
 </div>
@@ -97,7 +101,7 @@
   
     <form method="POST" action="{{ url_for('create_post', movie_id=movie.movie_id) }}">
       <textarea class="commentarea" name='comment'></textarea><br>
-      <button class="comment-button"type="submit">Add comment</button>
+      <button class="comment-button" type="submit">Add comment</button>
     </form>
   </div>
 

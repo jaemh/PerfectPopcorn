@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for, redirect
+from flask import render_template, request, url_for, redirect, abort
 from application.auth.forms import RegistrationForm
 from application import app, db
 from application.auth.models import User
@@ -26,11 +26,9 @@ def movie_form():
 def create_movie():
     f = Movie.query.filter_by(movie_name=request.form.get('name')).first()
 
-
     if f is None: 
       f = Movie(request.form.get('name'), Genre.query.get(request.form.get('genre')))
-      
-
+    
     userId = current_user.id
     user = User.query.get(userId)
     user.seenMovies.append(f) #tekee liittämisen
@@ -81,18 +79,37 @@ def user_list(movie_id):
 
     return person_page()
 
-@app.route("/post/delete/<post_id>", methods=["POST"])
+@app.route("/post/<post_id>/edit", methods=['GET', 'POST'])
+def edit_post(post_id):
+    
+    post = Post.query.get(post_id)
+    movieId = post.film.movie_id
+    form = request.form.get('comment')
+    if current_user.id != post.user_id:
+        abort(403)
+    
+    if request.method == 'GET':
+        return render_template('movies/edit_post.html', form = form, post=post)
+    
+   
+    post.post_text = request.form.get('comment')
+    db.session.commit()
+    return b(movieId)
+
+    
+    
+@app.route("/post/delete/<post_id>", methods=['POST'])
 def delete_post(post_id):
 
     post = Post.query.get(post_id)
     movieId = post.film.movie_id
    
-    
     if current_user.id == post.user_id:
         db.session.delete(post)
         db.session.commit()
 
     return b(movieId)
+
 
 
 
