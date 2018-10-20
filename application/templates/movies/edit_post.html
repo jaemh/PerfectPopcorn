@@ -2,8 +2,17 @@
 
 {% block body %}
   <style>
+
+      h4 {
+        position: relative;
+        left: 41%;
+        top: 10px;
+        font-family: Georgia;
+        font-size: 25px;
+      }
       .commentarea{
         position: relative;
+        left: 40%;
         padding: 20px;
         margin: 20px;
         width: 300px;
@@ -13,6 +22,7 @@
     .comment-button{
         margin: 20px;
         top: -45px;
+        left: 40%;
         position: relative;
         width: 300px;
         border-radius: .4em;
@@ -20,6 +30,7 @@
     }
 
   </style>
+    <h4> Please, rewrite you comment:</h4>
     <form method="POST" action="{{ url_for('edit_post', post_id=post.post_id )}}">
       <textarea class="commentarea" name='comment'></textarea><br>
       <button class="comment-button" type="submit">Edit comment</button>

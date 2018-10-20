@@ -28,14 +28,9 @@
   
 }
 
-.delete-button {
-  position: relative;
-  left: 60%;   
-}
-
 .username {
  position: relative;
- background: #848a8c;
+ background: slategray;
  padding: 7px;
  border-radius: .4em;
  right: 20px;
@@ -57,20 +52,44 @@
  border-radius: .4em;
 }
 
-.comment-button{
- margin: 20px;
- top: -45px;
- position: relative;
- width: 300px;
- border-radius: .4em;
- background-color:  #848a8c;
-}
+ .s {
+      position: relative;
+      width:250px;
+      top: 50px;
+    }
 
+    .btn {
+      position: relative;
+      width: 120%;
+      left: 20px;
+      top: -25px;
+      background-color: slategrey;
+      
+    }
+
+    .delete-button {
+      position: relative;
+      width: 280%;
+      left: 160px;
+      top: -40px;
+      background-color:red;
+      border-radius: .4em;
+
+
+    } 
+
+    .edit-button {
+      position: relative;
+      width: 280%;
+      left: 11px;
+      top: -11px;
+      background-color: slategrey;
+      border-radius: .4em;
 </style>
 
 
 <h2 class="heading"> {{ movie.movie_name }} </h2>
-
+<div class="s">
 {% for post in movie.posts %}
 <div class="col-sm-4">
   <div class="box">
@@ -82,7 +101,7 @@
 
     <form method="GET" action="{{ url_for('edit_post', post_id=post.post_id )}}">
     {% if post.user_id == current_user.id %}
-      <button class="delete-button">Edit</button>
+      <button class="edit-button">Edit</button>
     {% endif%}
     
     </form>
@@ -98,12 +117,13 @@
 {% endfor %}
 
 {% if current_user.is_authenticated %}
-  
     <form method="POST" action="{{ url_for('create_post', movie_id=movie.movie_id) }}">
       <textarea class="commentarea" name='comment'></textarea><br>
-      <button class="comment-button" type="submit">Add comment</button>
+      <input type="submit" class="btn" value="Add comment">
     </form>
+ 
   </div>
+</div>
 
 {% endif %}
 
