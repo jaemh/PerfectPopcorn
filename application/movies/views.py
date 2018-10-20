@@ -64,7 +64,8 @@ def create_post(movie_id):
 @app.route("/genre/<genre_id>")
 def genre_page(genre_id):
     movies = Movie.query.filter_by(genre_id=genre_id)
-    return render_template("movies/genre_page.html", movies=movies)
+    genre = Genre.query.get(genre_id)
+    return render_template("movies/genre_page.html", movies=movies, genre=genre)
 
 @app.route("/person/<movie_id>", methods=["POST"])
 def user_list(movie_id):

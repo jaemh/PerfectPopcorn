@@ -1,19 +1,29 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<style> 
+  h3 {
+    position: relative;
+    left: 10px;
 
+}
+
+</style>
 
 <table class="table">  
   <thead>
       <th scope="col">Movie</th>
   </thead>
 
+  <h3>{{ genre.genre_name }}</h3>
     <tr>
       {% for movie in movies %}
     </tr>
+    
     <tr>
-      <td>{{ movie.movie_name }}</td>
+      <td><a href="{{ url_for('b', movie_id=movie.movie_id) }}">{{ movie.movie_name }}</a></td>
     </tr>
+   
       {% endfor%}
 </table>  
   
